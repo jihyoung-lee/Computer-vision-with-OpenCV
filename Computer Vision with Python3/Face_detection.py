@@ -10,8 +10,8 @@ def Face_detection():  # Face detection with Histogram Backprojection
     channels = [0, 1]
     ranges = [0, 180, 0, 256]  # H = 0~180 , S = 0~256
     mask_hist = cv2.calcHist([mask_hsv], channels, None, [180, 256], ranges)  # mask img 's histogram
-    cv2.normalize(mask_hist, mask_hist, 0, 255, cv2.NORM_MINMAX)
-    dst = cv2.calcBackProject([img_hsv], channels, mask_hist, ranges, 5)  # backprojection
+    mask_norm = cv2.normalize(mask_hist, mask_hist, 0, 255, cv2.NORM_MINMAX)
+    dst = cv2.calcBackProject([img_hsv], channels, mask_norm, ranges, 1)  # backprojection
     ret, img_binary = cv2.threshold(dst, 0, 255, cv2.THRESH_BINARY +
                                     cv2.THRESH_OTSU)  # Otsu binarization
     cv2.imshow('Original', img)
