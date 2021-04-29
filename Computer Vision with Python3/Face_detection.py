@@ -6,7 +6,7 @@ mask_hsv = cv2.cvtColor(mask, cv2.COLOR_BGR2HSV)
 img_hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
 
-def back_projection():  # Histogram Backprojection
+def Face_detection():  # Face detection with Histogram Backprojection
     channels = [0, 1]
     ranges = [0, 180, 0, 256]  # H = 0~180 , S = 0~256
     mask_hist = cv2.calcHist([mask_hsv], channels, None, [180, 256], ranges)  # mask img 's histogram
@@ -19,4 +19,4 @@ def back_projection():  # Histogram Backprojection
     cv2.waitKey(0)
 
 
-back_projection()
+Face_detection()
