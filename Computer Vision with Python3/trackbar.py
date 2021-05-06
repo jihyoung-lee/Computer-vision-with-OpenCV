@@ -1,6 +1,6 @@
 import cv2 as cv
 
-img = cv.imread('chess.jpg', cv.IMREAD_GRAYSCALE)
+img = cv.imread('dog.jpg', cv.IMREAD_GRAYSCALE)
 
 
 # onChange :  트랙바 이벤트를 처리 할 콜백 함수
@@ -27,7 +27,7 @@ def Adaptive():  # 적응적 이진화
 
 def onChange2(dst):  # 이진화 콜백함수
     low = cv.getTrackbarPos('threshold', 'binarization')  # 트랙바의 현재값을 가져와 임계값으로 사용할 수 있도록 함
-    ret, img_binary = cv.threshold(img, low, 255, cv.THRESH_BINARY_INV)  # THRESH_BINARY_INV : 반전된 마스크 이미지
+    ret, img_binary = cv.threshold(img, low, 255, cv.THRESH_BINARY)  # THRESH_BINARY_INV : 반전된 마스크 이미지
     cv.imshow('binarization', img_binary)
 
 
@@ -54,5 +54,4 @@ def img_show2():
     cv.waitKey(0)
     cv.destroyAllWindows()
 
-
-Adaptive()
+binarization()
