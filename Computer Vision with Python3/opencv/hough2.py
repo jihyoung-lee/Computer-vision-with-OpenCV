@@ -3,8 +3,6 @@ import numpy as np
 
 img = cv2.imread('building.jpg', cv2.IMREAD_COLOR)
 gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-low = cv2.getTrackbarPos('threshold', 'result')
 edges = cv2.Canny(gray, 50, 150, apertureSize=3)
 lines = cv2.HoughLines(edges, 1, np.pi / 180, 220)
 for line in lines:
